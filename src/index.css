@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ajout d'une couleur de fond sombre par défaut pour éviter les flashs blancs au chargement */
+body {
+  background-color: #020617; /* correspond à slate-950 */
+  margin: 0;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
