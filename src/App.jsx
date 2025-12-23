@@ -460,15 +460,15 @@ export default function Portfolio() {
           </p>
           
           <div className="flex flex-col md:flex-row justify-center gap-6">
-            <a href="mailto:manodinnatcreusier@gmail.com" className="flex items-center justify-center gap-3 bg-white text-slate-900 px-8 py-4 rounded-full font-bold hover:bg-blue-50 transition-colors">
+            <a href="mailto:contact@exemple.com" className="flex items-center justify-center gap-3 bg-white text-slate-900 px-8 py-4 rounded-full font-bold hover:bg-blue-50 transition-colors">
               <Mail className="w-5 h-5" />
               Me contacter
             </a>
-            <a href="https://linkedin.com/in/mano-dinnat-7028662b2/" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-3 bg-slate-800 text-white px-8 py-4 rounded-full font-bold hover:bg-slate-700 border border-slate-700 transition-colors">
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-3 bg-slate-800 text-white px-8 py-4 rounded-full font-bold hover:bg-slate-700 border border-slate-700 transition-colors">
               <Linkedin className="w-5 h-5" />
               LinkedIn
             </a>
-            <a href="https://github.com/mano-dinnatcreusier" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-3 bg-slate-800 text-white px-8 py-4 rounded-full font-bold hover:bg-slate-700 border border-slate-700 transition-colors">
+            <a href="https://github.com" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-3 bg-slate-800 text-white px-8 py-4 rounded-full font-bold hover:bg-slate-700 border border-slate-700 transition-colors">
               <Github className="w-5 h-5" />
               GitHub
             </a>
