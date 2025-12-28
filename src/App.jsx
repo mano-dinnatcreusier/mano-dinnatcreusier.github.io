@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Github, 
@@ -18,7 +18,9 @@ import {
   Plane,
   Trophy,
   Users,
-  Waves
+  Waves,
+  Copy,
+  Check
 } from 'lucide-react';
 
 // --- Composants UI ---
@@ -141,6 +143,7 @@ const experiences = [
 
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState('all');
+  const [copied, setCopied] = useState(false);
 
   // Smooth scroll
   const scrollTo = (id) => {
@@ -148,6 +151,12 @@ export default function Portfolio() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText("manodinnatcreusier@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -159,9 +168,20 @@ export default function Portfolio() {
           <div className="font-bold text-xl tracking-tighter text-white">
             MDC<span className="text-blue-500">.</span>
           </div>
-          <div className="hidden md:flex space-x-8 text-sm font-medium text-slate-400">
+          <div className="hidden md:flex space-x-8 text-sm font-medium text-slate-400 items-center">
             <button onClick={() => scrollTo('about')} className="hover:text-blue-400 transition-colors">À propos</button>
             <button onClick={() => scrollTo('projects')} className="hover:text-blue-400 transition-colors">Projets</button>
+            
+            {/* Lien vers le fichier PPP.pdf */}
+            <a 
+              href="/PPP.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-blue-400 transition-colors"
+            >
+              PPP
+            </a>
+
             <button onClick={() => scrollTo('experience')} className="hover:text-blue-400 transition-colors">Expérience</button>
             <button onClick={() => scrollTo('softskills')} className="hover:text-blue-400 transition-colors">Soft Skills</button>
             <button onClick={() => scrollTo('contact')} className="hover:text-blue-400 transition-colors">Contact</button>
@@ -203,7 +223,7 @@ export default function Portfolio() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed"
           >
-            Ingénieur en devenir. Je recherche un stage de 2e année (2 à 3 mois) en systèmes ou réseaux.
+            Ingénieur en devenir. Je recherche un stage de 2e année (2 mois) en systèmes ou réseaux.
           </motion.p>
 
           <motion.div 
@@ -216,11 +236,16 @@ export default function Portfolio() {
               onClick={() => scrollTo('projects')}
               className="px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-medium transition-all shadow-lg shadow-blue-500/25 flex items-center gap-2"
             >
-              Voir mes projets <ChevronDown className="w-4 h-4" />
+              Mes projets <ChevronDown className="w-4 h-4" />
             </button>
-            <button className="px-8 py-3 rounded-full border border-slate-700 hover:bg-slate-800 text-slate-300 transition-all flex items-center gap-2">
+            <a 
+              href="/cv.pdf" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3 rounded-full border border-slate-700 hover:bg-slate-800 text-slate-300 transition-all flex items-center gap-2 justify-center"
+            >
               <Download className="w-4 h-4" /> Télécharger CV
-            </button>
+            </a>
           </motion.div>
         </div>
       </header>
@@ -453,26 +478,47 @@ export default function Portfolio() {
         <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-3xl p-8 md:p-16 border border-blue-500/10 text-center relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -z-10" />
           
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Prêt à collaborer ?</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Me contacter</h2>
           <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-10">
             Je suis disponible pour un stage de <span className="text-white font-bold">2 à 3 mois</span> à partir de Juin 2025.
             Mobile géographiquement et avide de défis techniques.
           </p>
           
-          <div className="flex flex-col md:flex-row justify-center gap-6">
-            <a href="mailto:contact@exemple.com" className="flex items-center justify-center gap-3 bg-white text-slate-900 px-8 py-4 rounded-full font-bold hover:bg-blue-50 transition-colors">
+          <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-6">
+            <a 
+              href="mailto:manodinnatcreusier@gmail.com" 
+              className="w-full md:w-auto flex items-center justify-center gap-3 bg-white text-slate-900 px-8 py-4 rounded-full font-bold hover:bg-blue-50 transition-colors"
+            >
               <Mail className="w-5 h-5" />
-              Me contacter
+              Email
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-3 bg-slate-800 text-white px-8 py-4 rounded-full font-bold hover:bg-slate-700 border border-slate-700 transition-colors">
+            <a 
+              href="https://linkedin.com/in/mano-dinnat-7028662b2/" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="w-full md:w-auto flex items-center justify-center gap-3 bg-slate-800 text-white px-8 py-4 rounded-full font-bold hover:bg-slate-700 border border-slate-700 transition-colors"
+            >
               <Linkedin className="w-5 h-5" />
               LinkedIn
             </a>
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-3 bg-slate-800 text-white px-8 py-4 rounded-full font-bold hover:bg-slate-700 border border-slate-700 transition-colors">
+            <a 
+              href="https://github.com/mano-dinnatcreusier" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="w-full md:w-auto flex items-center justify-center gap-3 bg-slate-800 text-white px-8 py-4 rounded-full font-bold hover:bg-slate-700 border border-slate-700 transition-colors"
+            >
               <Github className="w-5 h-5" />
               GitHub
             </a>
           </div>
+
+          <button 
+            onClick={copyToClipboard}
+            className="mt-6 flex items-center justify-center gap-2 text-sm text-slate-400 hover:text-white transition-colors mx-auto"
+          >
+            {copied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}
+            {copied ? "Email copié !" : "Ou copier mon email"}
+          </button>
         </div>
       </Section>
 
