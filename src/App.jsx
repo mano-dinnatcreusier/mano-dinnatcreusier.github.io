@@ -21,9 +21,9 @@ import {
   Waves,
   Copy,
   Check,
-  FileText, // Ajouté pour les documents
-  ExternalLink, // Ajouté pour le lien d'offre
-  FileAudio // Ajouté pour la présentation m4a
+  FileText, 
+  ExternalLink, 
+  FileVideo // Changé de FileAudio à FileVideo
 } from 'lucide-react';
 
 // --- Composants UI ---
@@ -175,7 +175,7 @@ export default function Portfolio() {
             <button onClick={() => scrollTo('about')} className="hover:text-blue-400 transition-colors">À propos</button>
             <button onClick={() => scrollTo('projects')} className="hover:text-blue-400 transition-colors">Projets</button>
             
-            {/* Lien modifié pour scroller vers la section PPP */}
+            {/* Lien pour scroller vers la section PPP */}
             <button onClick={() => scrollTo('ppp')} className="hover:text-blue-400 transition-colors font-bold text-blue-400">PPP</button>
 
             <button onClick={() => scrollTo('experience')} className="hover:text-blue-400 transition-colors">Expérience</button>
@@ -344,7 +344,7 @@ export default function Portfolio() {
         </div>
       </Section>
 
-      {/* --- NOUVELLE SECTION PPP --- */}
+      {/* --- SECTION PPP --- */}
       <Section id="ppp" className="bg-slate-950">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -368,15 +368,15 @@ export default function Portfolio() {
               </a>
             </Card>
 
-            {/* Présentation Audio/Vidéo */}
+            {/* Présentation Vidéo (MODIFIÉ) */}
             <Card className="flex flex-col items-center text-center justify-center p-10">
-              <FileAudio className="w-16 h-16 text-purple-500 mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-2">Présentation Orale</h3>
-              <p className="text-slate-400 mb-6">Écoutez ma présentation détaillée au format audio (M4A).</p>
-              <audio controls className="w-full max-w-md accent-blue-500">
-                <source src="/presentation.m4a" type="audio/x-m4a" />
-                Votre navigateur ne supporte pas l'élément audio.
-              </audio>
+              <FileVideo className="w-16 h-16 text-purple-500 mb-4" />
+              <h3 className="text-2xl font-bold text-white mb-2">Présentation Vidéo</h3>
+              <p className="text-slate-400 mb-6">Regardez ma présentation détaillée au format vidéo (MP4).</p>
+              <video controls className="w-full max-w-md rounded-xl shadow-lg shadow-purple-500/20 accent-blue-500">
+                <source src="/presentation.mp4" type="video/mp4" />
+                Votre navigateur ne supporte pas l'élément vidéo.
+              </video>
             </Card>
           </div>
 
