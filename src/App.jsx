@@ -20,7 +20,10 @@ import {
   Users,
   Waves,
   Copy,
-  Check
+  Check,
+  FileText, // Ajouté pour les documents
+  ExternalLink, // Ajouté pour le lien d'offre
+  FileAudio // Ajouté pour la présentation m4a
 } from 'lucide-react';
 
 // --- Composants UI ---
@@ -172,15 +175,8 @@ export default function Portfolio() {
             <button onClick={() => scrollTo('about')} className="hover:text-blue-400 transition-colors">À propos</button>
             <button onClick={() => scrollTo('projects')} className="hover:text-blue-400 transition-colors">Projets</button>
             
-            {/* Lien vers le fichier PPP.pdf */}
-            <a 
-              href="/PPP.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="hover:text-blue-400 transition-colors"
-            >
-              PPP
-            </a>
+            {/* Lien modifié pour scroller vers la section PPP */}
+            <button onClick={() => scrollTo('ppp')} className="hover:text-blue-400 transition-colors font-bold text-blue-400">PPP</button>
 
             <button onClick={() => scrollTo('experience')} className="hover:text-blue-400 transition-colors">Expérience</button>
             <button onClick={() => scrollTo('softskills')} className="hover:text-blue-400 transition-colors">Soft Skills</button>
@@ -250,7 +246,7 @@ export default function Portfolio() {
         </div>
       </header>
 
-      {/* Formation Only Grid */}
+      {/* Formation Section */}
       <Section id="about">
         <motion.div
            initial={{ opacity: 0, y: 20 }}
@@ -346,6 +342,69 @@ export default function Portfolio() {
             ))}
           </AnimatePresence>
         </div>
+      </Section>
+
+      {/* --- NOUVELLE SECTION PPP --- */}
+      <Section id="ppp" className="bg-slate-950">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-10 text-center">Projet Professionnel Personnalisé (PPP)</h2>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            {/* Document PPP Principal */}
+            <Card className="flex flex-col items-center text-center justify-center p-10 border-blue-500/30">
+              <FileText className="w-16 h-16 text-blue-500 mb-4" />
+              <h3 className="text-2xl font-bold text-white mb-2">Rapport de Projet</h3>
+              <p className="text-slate-400 mb-6">Consultez mon dossier complet détaillant mon projet professionnel et mes objectifs.</p>
+              <a 
+                href="/PPP.pdf" 
+                target="_blank" 
+                className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-bold transition-all flex items-center gap-2"
+              >
+                Ouvrir le PPP (PDF) <ExternalLink className="w-4 h-4" />
+              </a>
+            </Card>
+
+            {/* Présentation Audio/Vidéo */}
+            <Card className="flex flex-col items-center text-center justify-center p-10">
+              <FileAudio className="w-16 h-16 text-purple-500 mb-4" />
+              <h3 className="text-2xl font-bold text-white mb-2">Présentation Orale</h3>
+              <p className="text-slate-400 mb-6">Écoutez ma présentation détaillée au format audio (M4A).</p>
+              <audio controls className="w-full max-w-md accent-blue-500">
+                <source src="/presentation.m4a" type="audio/x-m4a" />
+                Votre navigateur ne supporte pas l'élément audio.
+              </audio>
+            </Card>
+          </div>
+
+          {/* Sous-section Dossier de Candidature */}
+          <div className="bg-slate-900/50 rounded-3xl p-8 border border-slate-800">
+            <h3 className="text-xl font-bold text-white mb-8 flex items-center gap-3">
+              <Users className="text-blue-400" /> Dossier de Candidature
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <a href="https://lien-offre-emploi.com" target="_blank" rel="noreferrer" className="flex items-center gap-3 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors group">
+                <ExternalLink className="w-5 h-5 text-emerald-400" />
+                <span className="text-sm font-medium">Offre d'emploi</span>
+              </a>
+              <a href="/CV_FR.pdf" target="_blank" className="flex items-center gap-3 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors">
+                <FileText className="w-5 h-5 text-blue-400" />
+                <span className="text-sm font-medium">CV Français</span>
+              </a>
+              <a href="/CV_EN.pdf" target="_blank" className="flex items-center gap-3 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors">
+                <FileText className="w-5 h-5 text-indigo-400" />
+                <span className="text-sm font-medium">CV Anglais</span>
+              </a>
+              <a href="/LM.pdf" target="_blank" className="flex items-center gap-3 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors">
+                <FileText className="w-5 h-5 text-orange-400" />
+                <span className="text-sm font-medium">Lettre de Motivation</span>
+              </a>
+            </div>
+          </div>
+        </motion.div>
       </Section>
 
       {/* Experience Section */}
