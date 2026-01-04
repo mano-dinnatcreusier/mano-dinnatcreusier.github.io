@@ -23,7 +23,8 @@ import {
   Check,
   FileText, 
   ExternalLink, 
-  FileVideo // Changé de FileAudio à FileVideo
+  FileVideo,
+  Play // Ajout de l'icône Play
 } from 'lucide-react';
 
 // --- Composants UI ---
@@ -147,6 +148,7 @@ const experiences = [
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState('all');
   const [copied, setCopied] = useState(false);
+  const [showVideo, setShowVideo] = useState(false); // État pour l'affichage de la vidéo
 
   // Smooth scroll
   const scrollTo = (id) => {
@@ -175,7 +177,6 @@ export default function Portfolio() {
             <button onClick={() => scrollTo('about')} className="hover:text-blue-400 transition-colors">À propos</button>
             <button onClick={() => scrollTo('projects')} className="hover:text-blue-400 transition-colors">Projets</button>
             
-            {/* Lien pour scroller vers la section PPP */}
             <button onClick={() => scrollTo('ppp')} className="hover:text-blue-400 transition-colors font-bold text-blue-400">PPP</button>
 
             <button onClick={() => scrollTo('experience')} className="hover:text-blue-400 transition-colors">Expérience</button>
@@ -368,15 +369,30 @@ export default function Portfolio() {
               </a>
             </Card>
 
-            {/* Présentation Vidéo (MODIFIÉ) */}
-            <Card className="flex flex-col items-center text-center justify-center p-10">
+            {/* Présentation Vidéo avec affichage au clic */}
+            <Card className="flex flex-col items-center text-center justify-center p-10 overflow-hidden min-h-[400px]">
               <FileVideo className="w-16 h-16 text-purple-500 mb-4" />
               <h3 className="text-2xl font-bold text-white mb-2">Présentation Vidéo</h3>
               <p className="text-slate-400 mb-6">Regardez ma présentation détaillée au format vidéo (MP4).</p>
-              <video controls className="w-full max-w-md rounded-xl shadow-lg shadow-purple-500/20 accent-blue-500">
-                <source src="/presentation.mp4" type="video/mp4" />
-                Votre navigateur ne supporte pas l'élément vidéo.
-              </video>
+              
+              <div className="w-full max-w-md relative aspect-video bg-slate-900 rounded-xl overflow-hidden border border-slate-700 shadow-lg group">
+                {!showVideo ? (
+                  <button 
+                    onClick={() => setShowVideo(true)}
+                    className="absolute inset-0 w-full h-full flex flex-col items-center justify-center gap-3 bg-slate-900/40 group-hover:bg-slate-900/20 transition-all"
+                  >
+                    <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                      <Play className="w-8 h-8 text-white fill-current" />
+                    </div>
+                    <span className="text-sm font-bold text-white">Cliquer pour lire</span>
+                  </button>
+                ) : (
+                  <video controls autoPlay className="w-full h-full accent-blue-500">
+                    <source src="/presentation.mp4" type="video/mp4" />
+                    Votre navigateur ne supporte pas l'élément vidéo.
+                  </video>
+                )}
+              </div>
             </Card>
           </div>
 
@@ -386,7 +402,7 @@ export default function Portfolio() {
               <Users className="text-blue-400" /> Dossier de Candidature
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <a href="https://lien-offre-emploi.com" target="_blank" rel="noreferrer" className="flex items-center gap-3 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors group">
+              <a href="https://fr.indeed.com/viewjob?jk=4157c026b2e6482f&from=shareddesktop_copy" target="_blank" rel="noreferrer" className="flex items-center gap-3 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors group">
                 <ExternalLink className="w-5 h-5 text-emerald-400" />
                 <span className="text-sm font-medium">Offre d'emploi</span>
               </a>
@@ -407,21 +423,18 @@ export default function Portfolio() {
         </motion.div>
       </Section>
 
+      {/* ... reste du code (Experience, Soft Skills, Contact, Footer) reste identique ... */}
+      
       {/* Experience Section */}
       <Section id="experience">
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">Expériences Professionnelles</h2>
         <div className="max-w-3xl mx-auto space-y-8">
           {experiences.map((exp, index) => (
             <div key={index} className="relative pl-8 md:pl-0">
-              {/* Timeline line */}
               <div className="hidden md:block absolute left-[50%] top-0 bottom-0 w-px bg-slate-800 -translate-x-1/2"></div>
-              
               <div className={`md:flex items-center justify-between gap-8 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                 <div className="hidden md:block w-1/2" />
-                
-                {/* Center dot */}
                 <div className={`absolute left-0 md:left-1/2 w-4 h-4 rounded-full border-4 border-slate-950 -translate-x-[5px] md:-translate-x-1/2 mt-1.5 z-10 ${exp.type === 'tech' ? 'bg-blue-500' : 'bg-slate-500'}`}></div>
-
                 <motion.div 
                   className="w-full md:w-1/2"
                   initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
@@ -454,7 +467,6 @@ export default function Portfolio() {
       <Section id="softskills" className="bg-slate-900/30">
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-10">Soft Skills & Intérêts</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
           <Card className="hover:bg-emerald-900/10 hover:border-emerald-500/30">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 bg-emerald-500/10 rounded-lg text-emerald-400">
@@ -528,7 +540,6 @@ export default function Portfolio() {
               </div>
             </div>
           </Card>
-
         </div>
       </Section>
 
@@ -536,45 +547,23 @@ export default function Portfolio() {
       <Section id="contact" className="pb-32">
         <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-3xl p-8 md:p-16 border border-blue-500/10 text-center relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -z-10" />
-          
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Me contacter</h2>
           <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-10">
             Je suis disponible pour un stage de <span className="text-white font-bold">2 à 3 mois</span> à partir de Juin 2025.
             Mobile géographiquement et avide de défis techniques.
           </p>
-          
           <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-6">
-            <a 
-              href="mailto:manodinnatcreusier@gmail.com" 
-              className="w-full md:w-auto flex items-center justify-center gap-3 bg-white text-slate-900 px-8 py-4 rounded-full font-bold hover:bg-blue-50 transition-colors"
-            >
-              <Mail className="w-5 h-5" />
-              Email
+            <a href="mailto:manodinnatcreusier@gmail.com" className="w-full md:w-auto flex items-center justify-center gap-3 bg-white text-slate-900 px-8 py-4 rounded-full font-bold hover:bg-blue-50 transition-colors">
+              <Mail className="w-5 h-5" /> Email
             </a>
-            <a 
-              href="https://linkedin.com/in/mano-dinnat-7028662b2/" 
-              target="_blank" 
-              rel="noreferrer" 
-              className="w-full md:w-auto flex items-center justify-center gap-3 bg-slate-800 text-white px-8 py-4 rounded-full font-bold hover:bg-slate-700 border border-slate-700 transition-colors"
-            >
-              <Linkedin className="w-5 h-5" />
-              LinkedIn
+            <a href="https://linkedin.com/in/mano-dinnat-7028662b2/" target="_blank" rel="noreferrer" className="w-full md:w-auto flex items-center justify-center gap-3 bg-slate-800 text-white px-8 py-4 rounded-full font-bold hover:bg-slate-700 border border-slate-700 transition-colors">
+              <Linkedin className="w-5 h-5" /> LinkedIn
             </a>
-            <a 
-              href="https://github.com/mano-dinnatcreusier" 
-              target="_blank" 
-              rel="noreferrer" 
-              className="w-full md:w-auto flex items-center justify-center gap-3 bg-slate-800 text-white px-8 py-4 rounded-full font-bold hover:bg-slate-700 border border-slate-700 transition-colors"
-            >
-              <Github className="w-5 h-5" />
-              GitHub
+            <a href="https://github.com/mano-dinnatcreusier" target="_blank" rel="noreferrer" className="w-full md:w-auto flex items-center justify-center gap-3 bg-slate-800 text-white px-8 py-4 rounded-full font-bold hover:bg-slate-700 border border-slate-700 transition-colors">
+              <Github className="w-5 h-5" /> GitHub
             </a>
           </div>
-
-          <button 
-            onClick={copyToClipboard}
-            className="mt-6 flex items-center justify-center gap-2 text-sm text-slate-400 hover:text-white transition-colors mx-auto"
-          >
+          <button onClick={copyToClipboard} className="mt-6 flex items-center justify-center gap-2 text-sm text-slate-400 hover:text-white transition-colors mx-auto">
             {copied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}
             {copied ? "Email copié !" : "Ou copier mon email"}
           </button>
