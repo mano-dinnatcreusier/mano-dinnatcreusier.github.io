@@ -24,7 +24,7 @@ import {
   FileText, 
   ExternalLink, 
   FileVideo,
-  Play // Ajout de l'icône Play
+  Play 
 } from 'lucide-react';
 
 // --- Composants UI ---
@@ -148,7 +148,7 @@ const experiences = [
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState('all');
   const [copied, setCopied] = useState(false);
-  const [showVideo, setShowVideo] = useState(false); // État pour l'affichage de la vidéo
+  // const [showVideo, setShowVideo] = useState(false); // État supprimé car vidéo retirée
 
   // Smooth scroll
   const scrollTo = (id) => {
@@ -177,7 +177,8 @@ export default function Portfolio() {
             <button onClick={() => scrollTo('about')} className="hover:text-blue-400 transition-colors">À propos</button>
             <button onClick={() => scrollTo('projects')} className="hover:text-blue-400 transition-colors">Projets</button>
             
-            <button onClick={() => scrollTo('ppp')} className="hover:text-blue-400 transition-colors font-bold text-blue-400">PPP</button>
+            {/* Onglet PPP mis en commentaire */}
+            {/* <button onClick={() => scrollTo('ppp')} className="hover:text-blue-400 transition-colors font-bold text-blue-400">PPP</button> */}
 
             <button onClick={() => scrollTo('experience')} className="hover:text-blue-400 transition-colors">Expérience</button>
             <button onClick={() => scrollTo('softskills')} className="hover:text-blue-400 transition-colors">Soft Skills</button>
@@ -352,48 +353,25 @@ export default function Portfolio() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-10 text-center">Projet Professionnel Personnalisé (PPP)</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-10 text-center">Personal & Professional Project (PPP)</h2>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          {/* Centrage du contenu restant (Rapport uniquement) */}
+          <div className="flex justify-center mb-12">
             {/* Document PPP Principal */}
-            <Card className="flex flex-col items-center text-center justify-center p-10 border-blue-500/30">
-              <FileText className="w-16 h-16 text-blue-500 mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-2">Rapport de Projet</h3>
-              <p className="text-slate-400 mb-6">Consultez mon dossier complet détaillant mon projet professionnel et mes objectifs.</p>
-              <a 
-                href="/PPP.pdf" 
-                target="_blank" 
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-bold transition-all flex items-center gap-2"
-              >
-                Ouvrir le PPP (PDF) <ExternalLink className="w-4 h-4" />
-              </a>
-            </Card>
-
-            {/* Présentation Vidéo avec affichage au clic */}
-            <Card className="flex flex-col items-center text-center justify-center p-10 overflow-hidden min-h-[400px]">
-              <FileVideo className="w-16 h-16 text-purple-500 mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-2">Présentation Vidéo</h3>
-              <p className="text-slate-400 mb-6">Regardez ma présentation détaillée au format vidéo (MP4).</p>
-              
-              <div className="w-full max-w-md relative aspect-video bg-slate-900 rounded-xl overflow-hidden border border-slate-700 shadow-lg group">
-                {!showVideo ? (
-                  <button 
-                    onClick={() => setShowVideo(true)}
-                    className="absolute inset-0 w-full h-full flex flex-col items-center justify-center gap-3 bg-slate-900/40 group-hover:bg-slate-900/20 transition-all"
-                  >
-                    <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                      <Play className="w-8 h-8 text-white fill-current" />
-                    </div>
-                    <span className="text-sm font-bold text-white">Cliquer pour lire</span>
-                  </button>
-                ) : (
-                  <video controls autoPlay className="w-full h-full accent-blue-500">
-                    <source src="/presentation.mp4" type="video/mp4" />
-                    Votre navigateur ne supporte pas l'élément vidéo.
-                  </video>
-                )}
-              </div>
-            </Card>
+            <div className="w-full max-w-lg">
+              <Card className="flex flex-col items-center text-center justify-center p-10 border-blue-500/30 h-full">
+                <FileText className="w-16 h-16 text-blue-500 mb-4" />
+                <h3 className="text-2xl font-bold text-white mb-2">Rapport de Projet</h3>
+                <p className="text-slate-400 mb-6">Consultez mon dossier complet détaillant mon projet professionnel et mes objectifs.</p>
+                <a 
+                  href="/PPP.pdf" 
+                  target="_blank" 
+                  className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-bold transition-all flex items-center gap-2"
+                >
+                  Ouvrir le PPP (PDF) <ExternalLink className="w-4 h-4" />
+                </a>
+              </Card>
+            </div>
           </div>
 
           {/* Sous-section Dossier de Candidature */}
@@ -423,8 +401,6 @@ export default function Portfolio() {
         </motion.div>
       </Section>
 
-      {/* ... reste du code (Experience, Soft Skills, Contact, Footer) reste identique ... */}
-      
       {/* Experience Section */}
       <Section id="experience">
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">Expériences Professionnelles</h2>
