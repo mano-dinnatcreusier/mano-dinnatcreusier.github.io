@@ -22,9 +22,8 @@ import {
   Copy,
   Check,
   FileText, 
-  ExternalLink, 
-  FileVideo,
-  Play 
+  ExternalLink,
+  Eye 
 } from 'lucide-react';
 
 // --- Composants UI ---
@@ -66,7 +65,10 @@ const projects = [
     desc: "Conception et implémentation d'un module UART en VHDL pour communication série sur carte FPGA.",
     tags: ["VHDL", "FPGA", "Hardware"],
     icon: <Cpu className="w-6 h-6 text-purple-400" />,
-    category: "Hardware"
+    category: "Hardware",
+    // Ajout des liens demandés
+    github: "https://github.com/mano-dinnatcreusier/NOM_DU_REPO_FPGA", 
+    pdf: null
   },
   {
     title: "Compilateur RAT",
@@ -74,7 +76,9 @@ const projects = [
     desc: "Création complète d'un compilateur pour le langage RAT : analyse lexicale, syntaxique et génération de code.",
     tags: ["OCaml", "Compilation", "Algorithmique"],
     icon: <Terminal className="w-6 h-6 text-orange-400" />,
-    category: "Dev"
+    category: "Dev",
+    github: "https://github.com/mano-dinnatcreusier/NOM_DU_REPO_RAT",
+    pdf: "/projets/rapport_rat.pdf"
   },
   {
     title: "Infrastructure Réseau FAI",
@@ -82,7 +86,9 @@ const projects = [
     desc: "Simulation complète : site entreprise, VPN, et configuration d'un fournisseur d'accès internet.",
     tags: ["Réseau", "SysAdmin", "Sécurité"],
     icon: <Network className="w-6 h-6 text-blue-400" />,
-    category: "Réseau"
+    category: "Réseau",
+    github: null,
+    pdf: "/projets/rapport_fai.pdf"
   },
   {
     title: "Performance RMI vs Agent Mobile",
@@ -90,7 +96,9 @@ const projects = [
     desc: "Création d'un agent mobile et étude comparative des performances avec une architecture RMI classique.",
     tags: ["Java", "Systèmes Distribués"],
     icon: <Activity className="w-6 h-6 text-red-400" />,
-    category: "Réseau"
+    category: "Réseau",
+    github: "https://github.com/mano-dinnatcreusier/NOM_DU_REPO_RMI",
+    pdf: "/projets/rapport_rmi.pdf"
   },
   {
     title: "Algorithmes de Routage Telecom",
@@ -98,7 +106,10 @@ const projects = [
     desc: "Simulation et analyse comparative de différents algorithmes de routage pour les réseaux de télécommunications.",
     tags: ["Matlab", "Algo", "Telecom"],
     icon: <Network className="w-6 h-6 text-cyan-400" />,
-    category: "Réseau"
+    category: "Réseau",
+    // Pas de lien spécifié pour celui-ci, je laisse vide
+    github: null,
+    pdf: null
   },
   {
     title: "IA & Prédiction Sportive",
@@ -106,7 +117,9 @@ const projects = [
     desc: "Développement d'un modèle d'IA pour prédire les résultats de matchs de football.",
     tags: ["Python", "Machine Learning", "Data Science"],
     icon: <Database className="w-6 h-6 text-emerald-400" />,
-    category: "IA"
+    category: "IA",
+    github: null,
+    pdf: "/projets/rapport_ia.pdf"
   },
   {
     title: "Étude du mouvement des planètes",
@@ -114,7 +127,9 @@ const projects = [
     desc: "Simulation numérique et étude physique des orbites planétaires.",
     tags: ["Mathématiques", "Physique", "Simulation"],
     icon: <Globe className="w-6 h-6 text-indigo-400" />,
-    category: "IA"
+    category: "IA", // Note: Peut-être à changer en "Maths" ou autre si vous voulez
+    github: null,
+    pdf: "/projets/projet_maths.pdf"
   }
 ];
 
@@ -148,7 +163,6 @@ const experiences = [
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState('all');
   const [copied, setCopied] = useState(false);
-  // const [showVideo, setShowVideo] = useState(false); // État supprimé car vidéo retirée
 
   // Smooth scroll
   const scrollTo = (id) => {
@@ -332,12 +346,39 @@ export default function Portfolio() {
                       {project.desc}
                     </p>
                   </div>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {project.tags.map((tag, i) => (
-                      <span key={i} className="text-xs text-slate-500 bg-slate-900 px-2 py-1 rounded border border-slate-800">
-                        {tag}
-                      </span>
-                    ))}
+                  
+                  {/* Tags et Boutons d'action */}
+                  <div className="mt-auto">
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tags.map((tag, i) => (
+                        <span key={i} className="text-xs text-slate-500 bg-slate-900 px-2 py-1 rounded border border-slate-800">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex gap-3 pt-4 border-t border-slate-800">
+                      {project.github && (
+                        <a 
+                          href={project.github} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 text-xs font-bold text-white bg-slate-700 hover:bg-slate-600 px-3 py-2 rounded-lg transition-colors"
+                        >
+                          <Github className="w-3.5 h-3.5" /> Code
+                        </a>
+                      )}
+                      {project.pdf && (
+                        <a 
+                          href={project.pdf} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 text-xs font-bold text-blue-400 hover:text-white bg-blue-500/10 hover:bg-blue-600 px-3 py-2 rounded-lg transition-all border border-blue-500/20 hover:border-blue-500"
+                        >
+                          <FileText className="w-3.5 h-3.5" /> Rapport
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </Card>
               </motion.div>
@@ -355,27 +396,10 @@ export default function Portfolio() {
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-10 text-center">Personal & Professional Project (PPP)</h2>
           
-          {/* Centrage du contenu restant (Rapport uniquement) */}
-          <div className="flex justify-center mb-12">
-            {/* Document PPP Principal */}
-            <div className="w-full max-w-lg">
-              <Card className="flex flex-col items-center text-center justify-center p-10 border-blue-500/30 h-full">
-                <FileText className="w-16 h-16 text-blue-500 mb-4" />
-                <h3 className="text-2xl font-bold text-white mb-2">Rapport de Projet</h3>
-                <p className="text-slate-400 mb-6">Consultez mon dossier complet détaillant mon projet professionnel et mes objectifs.</p>
-                <a 
-                  href="/PPP.pdf" 
-                  target="_blank" 
-                  className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-bold transition-all flex items-center gap-2"
-                >
-                  Ouvrir le PPP (PDF) <ExternalLink className="w-4 h-4" />
-                </a>
-              </Card>
-            </div>
-          </div>
+          {/* Carte Rapport de Projet supprimée ici */}
 
           {/* Sous-section Dossier de Candidature */}
-          <div className="bg-slate-900/50 rounded-3xl p-8 border border-slate-800">
+          <div className="bg-slate-900/50 rounded-3xl p-8 border border-slate-800 max-w-4xl mx-auto">
             <h3 className="text-xl font-bold text-white mb-8 flex items-center gap-3">
               <Users className="text-blue-400" /> Dossier de Candidature
             </h3>
