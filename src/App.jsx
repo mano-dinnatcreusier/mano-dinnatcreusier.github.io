@@ -67,7 +67,7 @@ const projects = [
     icon: <Cpu className="w-6 h-6 text-purple-400" />,
     category: "Hardware",
     // Ajout des liens demandés
-    github: "https://github.com/mano-dinnatcreusier/NOM_DU_REPO_FPGA", 
+    github: "https://github.com/AchilleTheux/UART_FPGA", 
     pdf: null
   },
   {
@@ -77,7 +77,7 @@ const projects = [
     tags: ["OCaml", "Compilation", "Algorithmique"],
     icon: <Terminal className="w-6 h-6 text-orange-400" />,
     category: "Dev",
-    github: "https://github.com/mano-dinnatcreusier/NOM_DU_REPO_RAT",
+    github: "https://github.com/Ravemi987/tdl-project",
     pdf: "/projets/rapport_rat.pdf"
   },
   {
@@ -97,7 +97,7 @@ const projects = [
     tags: ["Java", "Systèmes Distribués"],
     icon: <Activity className="w-6 h-6 text-red-400" />,
     category: "Réseau",
-    github: "https://github.com/mano-dinnatcreusier/NOM_DU_REPO_RMI",
+    github: "https://github.com/30Alexis01/Projet-Donn-es-R-parties-Intergiciel",
     pdf: "/projets/rapport_rmi.pdf"
   },
   {
@@ -108,8 +108,8 @@ const projects = [
     icon: <Network className="w-6 h-6 text-cyan-400" />,
     category: "Réseau",
     // Pas de lien spécifié pour celui-ci, je laisse vide
-    github: null,
-    pdf: null
+    github: "https://github.com/mano-dinnatcreusier/telecom",
+    pdf: "projets/rapport_telecom.pdf"
   },
   {
     title: "IA & Prédiction Sportive",
