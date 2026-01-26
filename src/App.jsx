@@ -88,7 +88,7 @@ const projects = [
     icon: <Network className="w-6 h-6 text-blue-400" />,
     category: "Réseau",
     github: null,
-    pdf: "/projets/rapport_fai.pdf"
+    pdf: "/projets/rapport_interconnexion.pdf"
   },
   {
     title: "Performance RMI vs Agent Mobile",
@@ -202,7 +202,7 @@ export default function Portfolio() {
             href="#contact"
             className="hidden md:flex items-center gap-2 bg-slate-100 text-slate-900 px-4 py-2 rounded-full text-xs font-bold hover:bg-blue-500 hover:text-white transition-all"
           >
-            Me recruter
+            Me contacter
           </a>
         </div>
       </nav>
