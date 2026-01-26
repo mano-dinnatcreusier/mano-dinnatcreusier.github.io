@@ -40,6 +40,7 @@ const translations = {
     heroDesc: "Ingénieur en devenir. Je recherche un stage de 2e année (2 mois) en systèmes ou réseaux.",
     heroProjects: "Mes projets",
     heroCV: "Télécharger CV",
+    cvUrl: "/cv.pdf", // Lien vers votre CV en français
     formationTitle: "Formation Académique",
     formationN7: "Cycle d'ingénieur en Science du Numérique",
     formationN7Sub: "Parcours Architecture, Systèmes et Réseaux.",
@@ -66,6 +67,7 @@ const translations = {
     heroDesc: "Aspiring Engineer. I am looking for a 2nd-year internship (2 months) in systems or networks.",
     heroProjects: "My projects",
     heroCV: "Download CV",
+    cvUrl: "/cv-en.pdf", // Lien vers votre CV en anglais
     formationTitle: "Academic Background",
     formationN7: "Engineering Degree in Computer Science",
     formationN7Sub: "Specialization in Architecture, Systems and Networks.",
@@ -323,7 +325,8 @@ export default function Portfolio() {
             <button onClick={() => scrollTo('projects')} className="px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-medium transition-all shadow-lg shadow-blue-500/25 flex items-center gap-2">
               {t.heroProjects} <ChevronDown className="w-4 h-4" />
             </button>
-            <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-full border border-slate-700 hover:bg-slate-800 text-slate-300 transition-all flex items-center gap-2 justify-center">
+            {/* Version dynamique du lien CV */}
+            <a href={t.cvUrl} target="_blank" rel="noopener noreferrer" className="px-8 py-3 rounded-full border border-slate-700 hover:bg-slate-800 text-slate-300 transition-all flex items-center gap-2 justify-center">
               <Download className="w-4 h-4" /> {t.heroCV}
             </a>
           </motion.div>
