@@ -387,43 +387,7 @@ export default function Portfolio() {
         </div>
       </Section>
 
-      {/* --- SECTION PPP --- */}
-      <Section id="ppp" className="bg-slate-950">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-10 text-center">Personal & Professional Project (PPP)</h2>
-          
-          {/* Carte Rapport de Projet supprimée ici */}
-
-          {/* Sous-section Dossier de Candidature */}
-          <div className="bg-slate-900/50 rounded-3xl p-8 border border-slate-800 max-w-4xl mx-auto">
-            <h3 className="text-xl font-bold text-white mb-8 flex items-center gap-3">
-              <Users className="text-blue-400" /> Dossier de Candidature
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <a href="https://fr.indeed.com/viewjob?jk=4157c026b2e6482f&from=shareddesktop_copy" target="_blank" rel="noreferrer" className="flex items-center gap-3 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors group">
-                <ExternalLink className="w-5 h-5 text-emerald-400" />
-                <span className="text-sm font-medium">Offre d'emploi</span>
-              </a>
-              <a href="/CV_FR.pdf" target="_blank" className="flex items-center gap-3 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors">
-                <FileText className="w-5 h-5 text-blue-400" />
-                <span className="text-sm font-medium">CV Français</span>
-              </a>
-              <a href="/CV_EN.pdf" target="_blank" className="flex items-center gap-3 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors">
-                <FileText className="w-5 h-5 text-indigo-400" />
-                <span className="text-sm font-medium">CV Anglais</span>
-              </a>
-              <a href="/LM.pdf" target="_blank" className="flex items-center gap-3 p-4 bg-slate-800 rounded-xl hover:bg-slate-700 transition-colors">
-                <FileText className="w-5 h-5 text-orange-400" />
-                <span className="text-sm font-medium">Lettre de Motivation</span>
-              </a>
-            </div>
-          </div>
-        </motion.div>
-      </Section>
+     
 
       {/* Experience Section */}
       <Section id="experience">
