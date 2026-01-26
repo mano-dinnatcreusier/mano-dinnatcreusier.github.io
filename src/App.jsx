@@ -357,7 +357,7 @@ export default function Portfolio() {
               <div className="md:border-l border-slate-700 md:pl-8 space-y-2">
                 <div className="flex justify-between items-baseline">
                   <h4 className="text-xl font-bold text-slate-300">Université de Toulouse</h4>
-                  <span className="text-sm font-mono text-slate-500 bg-slate-900 px-2 py-1 rounded">2020 - 2023</span>
+                  <span className="text-sm font-mono text-slate-500 bg-slate-900 px-2 py-1 rounded">2022 - 2025</span>
                 </div>
                 <p className="text-slate-200 font-medium">{t.formationUni}</p>
                 <p className="text-slate-400 text-sm">{t.formationUniSub}</p>
