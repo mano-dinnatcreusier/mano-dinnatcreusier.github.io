@@ -37,7 +37,7 @@ const translations = {
     navBtn: "Me contacter",
     heroBadge: "Étudiant Ingénieur ENSEEIHT",
     heroTitle: "Mano Dinnat Creusier",
-    heroDesc: "Ingénieur en devenir. Je recherche un stage de 2e année (2 mois) en systèmes ou réseaux.",
+    heroDesc: "Ingénieur en devenir. Je recherche un stage de 2e année (2 mois) en systèmes ou réseaux, prolongeable par une alternance.",
     heroProjects: "Mes projets",
     heroCV: "Télécharger CV",
     cvUrl: "/cv.pdf", // Lien vers votre CV en français
@@ -64,7 +64,7 @@ const translations = {
     navBtn: "Contact me",
     heroBadge: "Engineering Student at ENSEEIHT",
     heroTitle: "Mano Dinnat Creusier",
-    heroDesc: "Aspiring Engineer. I am looking for a 2nd-year internship (2 months) in systems or networks.",
+    heroDesc: "Aspiring Engineer. I am looking for a 2nd-year internship (2 - 3 months) in systems or networks.",
     heroProjects: "My projects",
     heroCV: "Download CV",
     cvUrl: "/cv-en.pdf", // Lien vers votre CV en anglais
