@@ -348,7 +348,7 @@ export default function Portfolio() {
               <div className="space-y-2">
                 <div className="flex justify-between items-baseline">
                   <h4 className="text-xl font-bold text-blue-300">ENSEEIHT (N7)</h4>
-                  <span className="text-sm font-mono text-slate-500 bg-slate-900 px-2 py-1 rounded">2023 - 2026</span>
+                  <span className="text-sm font-mono text-slate-500 bg-slate-900 px-2 py-1 rounded">2025 - 2027</span>
                 </div>
                 <p className="text-white font-medium">{t.formationN7}</p>
                 <p className="text-slate-400 text-sm">{t.formationN7Sub}</p>
