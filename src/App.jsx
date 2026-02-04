@@ -127,7 +127,7 @@ const projects = [
     tags: ["VHDL", "FPGA", "Hardware"],
     icon: <Cpu className="w-6 h-6 text-purple-400" />,
     category: "Hardware",
-    github: "https://github.com/AchilleTheux/UART_FPGA", 
+    github: "https://github.com/mano-dinnatcreusier/UART_FPGA", 
     pdf: null
   },
   {
